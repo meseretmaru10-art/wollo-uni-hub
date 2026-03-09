@@ -129,6 +129,11 @@ function updateDisplay(day) {
     let html = `<h3>Section ${selectedSection} - ${day}</h3>`;
 
     if (!sessions || sessions.length === 0) {
-        html += `<p class='placeholder-text'>ለዚህ ቀን ዳታ አልተገኘም ወይም ክፍለ ጊዜ የለም።</p>`;
+        html += `<p class='placeholder-text'>ለዚህ ቀን ክፍለ ጊዜ የለም።</p>`;
     } else {
-        sessions.
+        sessions.forEach(s => {
+            html += `
+                <div class="schedule-item">
+                    <div class="course-info">
+                        <span class="course-name">${s.c}</span><br>
+                        <span class="room-name">Room
