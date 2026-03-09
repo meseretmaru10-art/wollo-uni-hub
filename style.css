@@ -1,0 +1,37 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.container {
+    background-color: white;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    padding: 25px;
+    text-align: center;
+}
+h1 { color: #1a73e8; }
+select, .day-btn {
+    padding: 12px;
+    margin: 5px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+.day-btn {
+    background-color: #2196F3;
+    color: white;
+    cursor: pointer;
+}
+.schedule-item {
+    background: #f9f9f9;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 12px;
+    border-left: 5px solid #2196F3;
+    text-align: left;
+}
