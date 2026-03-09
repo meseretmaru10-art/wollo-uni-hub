@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wollo Uni - Info Hub</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .app-container {
+            background-color: white;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 30px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 { color: #1e88e5; margin-bottom: 5px; }
+        .subtitle { color: #666; font-size: 14px; margin-bottom: 20px; }
+        
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid #1e88e5;
+            font-size: 16px;
+            margin-bottom: 20px;
+            background: white;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .day-btn {
+            background-color: #1e88e5;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .day-btn:hover { background-color: #1565c0; }
+
+        .info-box {
+            background-color: #fcfcfc;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 180px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .info-box h3 { color: #1e88e5; text-align: center; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        
+        .schedule-item {
+            display: flex;
+            flex-direction: column;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .item-main { display: flex; justify-content: space-between; font-weight: bold; }
+        .item-sub { font-size: 12px; color: #666; display: flex; justify-content: space-between; }
+        .time { color: #e74c3c; }
+        .room { color: #27ae60; }
+
+        .footer-card {
+            background-color: #e3f2fd;
+            border: 1px dashed #1e88e5;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: left;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <h1>Wollo Uni Info Hub</h1>
+    <p class="subtitle">Software Engineering - COC Project</p>
+    
+    <p>ሴክሽንዎን ይምረጡ</p>
+    <select id="sectionSelect" onchange="clearDisplay()">
+        <option value="A">Section A</option>
+        <option value="B">Section B</option>
+        <option value="C">Section C</option>
+        <option value="D">Section D</option>
+        <option value="E">Section E</option>
+        <option value="F">Section F</option>
+        <option value="G">Section G</option>
+        <option value="H">Section H</option>
+        <option value="I">Section I</option>
+        <option value="J">Section J</option>
+        <option value="K">Section K</option>
+        <option value="L">Section L</option>
+        <option value="M">Section M</option>
+        <option value="N">Section N</option>
+    </select>
+
+    <div class="days-grid">
+        <button class="day-btn" onclick="updateSchedule('Monday')">Monday</button>
+        <button class="day-btn" onclick="updateSchedule('Tuesday')">Tuesday</button>
+        <button class="day-btn" onclick="updateSchedule('Wednesday')">Wednesday</button>
+        <button class="day-btn" onclick="updateSchedule('Thursday')">Thursday</button>
+        <button class="day-btn" onclick="updateSchedule('Friday')">Friday</button>
+    </div>
+
+    <div class="info-box" id="displayArea">
+        <h3 id="displayTitle">Section - Day</h3>
+        <div id="scheduleContent">ቀን በመምረጥ ፕሮግራሙን ይመልከቱ።</div>
+    </div>
+
+    <div class="footer-card">
+        <strong>ደራሲ (Author):</strong> Meseret.T<br>
+        <strong>መለያ ቁጥር (ID No):</strong> 1784/18<br>
+        <strong>ተቋም:</strong> ወሎ ዩኒቨርሲቲ (KIOT)<br>
+        <em>ይህ ኮድ ለ kiot freshman student የተዘጋጀ የራሴ ፈጠራ ነው።</em>
+    </div>
+</div>
+
+<script>
+    const sectionData = {
+        'A': {
+            'Monday': [['2:10-3:55', 'Math1041', 'Wubshet H.', 'CR3201'], ['7:50-8:40', 'Hist1012', 'Arega K.', 'CR3201']],
+            'Tuesday': [['2:10-3:00', 'Anth1012', 'Negash A.', 'CR3201'], ['8:50-11:10', 'Math1041', 'Wubshet H.', 'CR3201']],
+            'Wednesday': [['3:05-4:50', 'MCiE1012', 'TBA', 'CR3201'], ['7:50-9:30', 'FLEN1012', 'Dr. Abel M.', 'CR3201']],
+            'Thursday': [['2:10-3:55', 'ECEg1052', 'Abebaw S.', 'CR3201'], ['7:50-9:30', 'EmTe1012', 'Kassahun A.', 'CR3201']],
+            'Friday': [['2:10-3:00', 'EmTe1012', 'Kassahun A.', 'CR3201'], ['9:30-11:10', 'ECEg1052', 'Abebaw S.', 'CR3201']]
+        },
+        'B': {
+            'Monday': [['3:05-4:50', 'EmTe1012', 'Kassahun A.', 'CR3202'], ['8:50-11:10', 'Math1041', 'Wubshet H.', 'CR3202']],
+            'Tuesday': [['2:10-3:00', 'EmTe1012', 'Kassahun A.', 'CR3202'], ['3:05-4:50', 'ECEg1052', 'Abebaw S.', 'CR3202'], ['7:50-9:30', 'EmTe1012', 'Kassahun A.', 'CR3202']],
+            'Wednesday': [['8:50-11:10', 'Math1041', 'Wubshet H.', 'CR3202']],
+            'Thursday': [['2:10-3:55', 'ECEg1052', 'Abebaw S.', 'CR3202'], ['4:00-4:50', 'Anth1012', 'Negash A.', 'CR3201'], ['8:50-11:10', 'MCiE1012', 'Amanuel D.', 'CR3202']],
+            'Friday': [['2:10-3:55', 'Hist1012', 'Hussein A.', 'CR3202'], ['8:50-11:10', 'FLEN1012', 'Dr. Tsegaye M.', 'CR3234']]
+        },
+        'C': {
+            'Monday': [['2:10-3:55', 'ECEg1052', 'Dawit K.', 'CR3202'], ['4:00-4:50', 'Anth1012', 'Melkam A.', 'CR3203'], ['7:50-9:30', 'EmTe1012', 'Melkamu T.', 'CR3202']],
+            'Tuesday': [['2:10-3:55', 'Math1041', 'Wubshet H.', 'CR3203'], ['7:50-9:30', 'Hist1012', 'Tesfaye T.', 'CR3202']],
+            'Wednesday': [['2:10-3:55', 'EmTe1012', 'Melkamu T.', 'CR3202'], ['8:50-11:10', 'MCiE1012', 'Beletech G.', 'CR3235']],
+            'Thursday': [['2:10-3:55', 'FLEN1012', 'Dr. Tsegaye M.', 'CR3235'], ['4:00-5:45', 'Math1041', 'Wubshet H.', 'CR3203']],
+            'Friday': [['7:50-9:30', 'ECEg1052', 'Dawit K.', 'CR3202']]
+        },
+        'D': {
+            'Monday': [['2:10-4:50', 'Math1041', 'H/eyesus M.', 'CR3204'], ['8:50-11:10', 'ECEg1052', 'Daniel G.', 'CR3204']],
+            'Tuesday': [['2:10-3:55', 'ECEg1052', 'Daniel G.', 'CR3204'], ['4:00-5:45', 'MCiE1012', 'Tsehaynesh K.', 'CR3204']],
+            'Wednesday': [['8:50-11:10', 'EmTe1012', 'Melkamu T.', 'CR3204']],
+            'Thursday': [['2:10-3:55', 'FLEN1012', 'Dr. Tsegaye M.', 'CR3204'], ['4:00-5:45', 'Math1041', 'H/eyesus M.', 'CR3204'], ['8:50-11:10', 'Math1041', 'H/eyesus M.', 'CR3204']],
+            'Friday': [['2:10-3:55', 'Anth1012', 'Mr. Sisay D.', 'CR3204'], ['4:00-5:45', 'EmTe1012', 'Melkamu T.', 'CR3204'], ['8:50-11:10', 'Hist1012', 'Dr. Melaku A.', 'CR3204']]
+        },
+        'E': {
+            'Monday': [['8:50-11:10', 'ECEg1052', 'Tigist Z.', 'CR3205']],
+            'Tuesday': [['2:10-3:55', 'Math1041', 'H/eyesus M.', 'CR3205'], ['7:50-9:30', 'ECEg1052', 'Tigist Z.', 'CR3205']],
+            'Wednesday': [['2:10-3:55', 'Anth1012', 'Beidemariam W.', 'CR3205'], ['4:00-5:45', 'EmTe1012', 'Melkam A.', 'CR3205'], ['8:50-11:10', 'FLEN1012', 'Simachew M.', 'CR3205']],
+            'Thursday': [['2:10-3:55', 'MCiE1012', 'Zufan A.', 'CR3205'], ['4:00-5:45', 'Math1041', 'H/eyesus M.', 'CR3205'], ['7:50-9:30', 'Hist1012', 'Dr. Emishaw W.', 'CR3205'], ['9:30-11:10', 'EmTe1012', 'Melkam A.', 'CR3205']]
+        },
+        'F': {
+            'Monday': [['2:10-3:55', 'Math1041', 'Hussein T.', 'CR3206'], ['8:50-11:10', 'EmTe1012', 'Fentanesh T.', 'CR3206']],
+            'Tuesday': [['2:10-3:55', 'Anth1012', 'Dr. Fikadu B.', 'CR3206'], ['7:50-9:30', 'Hist1012', 'Dr. Alemayehu', 'CR3206'], ['9:30-11:10', 'ECEg1052', 'Molla T.', 'CR3206']],
+            'Wednesday': [['2:10-3:55', 'EmTe1012', 'Fentanesh T.', 'CR3206'], ['4:00-5:45', 'MCiE1012', 'Zufan A.', 'CR3206']],
+            'Thursday': [['2:10-3:55', 'Math1041', 'Hussein T.', 'CR3206']],
+            'Friday': [['2:10-3:55', 'ECEg1052', 'Molla T.', 'CR3206'], ['8:50-11:10', 'FLEN1012', 'Simachew M.', 'CR3206']]
+        },
+        'G': {
+            'Monday': [['2:10-3:55', 'Math1041', 'Muluken T.', 'CR3207'], ['8:50-11:10', 'ECEg1052', 'Shegaw G.', 'CR3207']],
+            'Tuesday': [['2:10-3:55', 'Math1041', 'Muluken T.', 'CR3207'], ['8:50-11:10', 'EmTe1012', 'Lakew T.', 'CR3207']],
+            'Wednesday': [['2:10-3:55', 'FLEN1012', 'Simachew M.', 'CR3207']],
+            'Thursday': [['2:10-3:55', 'MCiE1012', 'Dawit T.', 'CR3207'], ['4:00-5:45', 'EmTe1012', 'Lakew T.', 'CR3207']],
+            'Friday': [['4:00-5:45', 'Anth1012', 'Sisay D.', 'CR3207'], ['7:50-9:30', 'ECEg1052', 'Shegaw G.', 'CR3207'], ['9:30-11:10', 'Hist1012', 'Fitsum Y.', 'CR3207']]
+        },
+        'H': {
+            'Monday': [['2:10-3:55', 'EmTe1012', 'Ayele B.', 'CR3208'], ['4:00-5:45', 'Anth1012', 'Beidemariam W.', 'CR3240']],
+            'Tuesday': [['2:10-3:55', 'ECEg1052', 'Tefera A.', 'CR3208'], ['8:50-10:20', 'ECEG1052', 'Tefera A.', 'CR3208'], ['10:20-11:10', 'Hist1012', 'Fitsum Y.', 'CR3208']],
+            'Wednesday': [['2:10-3:55', 'EmTe1012', 'Ayele B.', 'CR3240'], ['8:50-11:10', 'Math1041', 'Awol A.', 'CR3240']],
+            'Thursday': [['2:10-3:55', 'FLEN1012', 'Abdulaziz', 'CR3208']],
+            'Friday': [['2:10-3:55', 'Math1041', 'Awol A.', 'CR3208'], ['4:00-5:45', 'MCiE1012', 'Dawit T.', 'CR3208']]
+        },
+        'I': {
+            'Monday': [['2:10-3:55', 'MCiE1012', 'Dawit T.', 'CR3209'], ['8:50-11:10', 'Anth1012', 'Melkam A.', 'CR3209']],
+            'Tuesday': [['2:10-3:55', 'Math1041', 'Belete A.', 'CR3209'], ['4:00-5:45', 'EmTe1012', 'Gashaw W.', 'CR3209'], ['8:50-11:10', 'ECEg1052', 'Eyob T.', 'CR3209']],
+            'Wednesday': [['8:50-11:10', 'ECEG1052', 'Eyob T.', 'CR3209']],
+            'Thursday': [['2:10-3:55', 'EmTe1012', 'Gashaw W.', 'CR3209'], ['8:50-11:10', 'Hist1012', 'Fitsum Y.', 'CR3209']],
+            'Friday': [['2:10-3:55', 'Math1041', 'Belete A.', 'CR3209'], ['8:50-11:10', 'FLEN1012', 'Abdulaziz', 'CR3209']]
+        },
+        'J': {
+            'Monday': [['2:10-3:55', 'EmTe1012', 'Eyob T.', 'CR3210'], ['8:50-11:10', 'Math1041', 'Melaku A.', 'CR3210']],
+            'Tuesday': [['2:10-3:55', 'Math1041', 'Melaku A.', 'CR3210'], ['8:50-11:10', 'FLEN1012', 'Manaye M.', 'CR3210']],
+            'Wednesday': [['2:10-3:55', 'ECEg1052', 'Ashenafi W.', 'CR3210'], ['4:00-5:45', 'EmTe1012', 'Eyob T.', 'CR3210']],
+            'Thursday': [['2:10-3:55', 'Hist1012', 'TBA', 'CR3210'], ['4:00-5:45', 'Anth1012', 'Dawit T.', 'CR3210'], ['8:50-11:10', 'ECEG1052', 'Ashenafi W.', 'CR3210']],
+            'Friday': [['2:10-3:55', 'MCiE1012', 'Meymuna Z.', 'CR3210']]
+        },
+        'K': {
+            'Monday': [['2:10-3:55', 'Anth1012', 'Melkam A.', 'CR3211'], ['7:50-9:30', 'Hist1012', 'Dr. Asfaw T.', 'CR3211']],
+            'Tuesday': [['2:10-3:55', 'EmTe1012', 'Habtamu A.', 'CR3211'], ['7:50-9:30', 'MCiE1012', 'Mohammed A.', 'CR3211']],
+            'Wednesday': [['2:10-3:55', 'FLEN1012', 'Asrar J.', 'CR3211'], ['7:50-9:30', 'Math1041', 'Engidasew K.', 'CR3211']],
+            'Thursday': [['2:10-3:55', 'Math1041', 'Engidasew K.', 'CR3211'], ['7:50-9:30', 'ECEG1052', 'Ashenafi W.', 'CR3211']],
+            'Friday': [['2:10-3:55', 'ECEg1052', 'Ashenafi W.', 'CR3211']]
+        },
+        'L': {
+            'Monday': [['7:50-9:30', 'EmTe1012', 'Addis M.', 'CR3212']],
+            'Tuesday': [['2:10-3:55', 'ECEg1052', 'Zereay M.', 'CR3212'], ['4:00-5:45', 'Anth1012', 'Dr. Fikadu B.', 'CR3212'], ['7:50-9:30', 'Math1041', 'Hermon G.', 'CR3212']],
+            'Wednesday': [['2:10-3:55', 'ECEG1052', 'Zereay M.', 'CR3212'], ['7:50-9:30', 'FLEN1012', 'Asrar J.', 'CR3212']],
+            'Thursday': [['2:10-3:55', 'MCiE1012', 'Mohammed A.', 'CR3212'], ['7:50-9:30', 'EmTe1012', 'Addis M.', 'CR3212']],
+            'Friday': [['2:10-3:55', 'Hist1012', 'Mengistu A.', 'CR3212'], ['7:50-9:30', 'Math1041', 'Hermon G.', 'CR3212']]
+        },
+        'M': {
+            'Monday': [['2:10-3:55', 'ECEG1052', 'Zereay M.', 'CR3213'], ['4:00-5:45', 'MCiE1012', 'Mohammed A.', 'CR3213']],
+            'Tuesday': [['2:10-3:55', 'Math1041', 'Sefanit E.', 'CR3213'], ['7:50-9:30', 'EmTe1012', 'Addis M.', 'CR3136']],
+            'Wednesday': [['2:10-3:55', 'FLEN1012', 'Asrar J.', 'CR3213'], ['7:50-9:30', 'Hist1012', 'Endris M.', 'CR3213']],
+            'Thursday': [['2:10-3:55', 'ECEG1052', 'Zereay M.', 'CR3213'], ['7:50-9:30', 'EmTe1012', 'Addis M.', 'CR3213']],
+            'Friday': [['2:10-3:55', 'Math1041', 'Sefanit E.', 'CR3213'], ['7:50-9:30', 'Anth1012', 'Meymuna Z.', 'CR3213']]
+        },
+        'N': {
+            'Monday': [['2:10-3:55', 'ECEG1052', 'Wubshet G.', 'CR3214'], ['7:50-9:30', 'Math1041', 'Sefanit E.', 'CR3214']],
+            'Tuesday': [['2:10-3:55', 'ECEg1052', 'Wubshet G.', 'CR3214'], ['7:50-9:30', 'MCiE1012', 'Mohammed A.', 'CR3214']],
+            'Wednesday': [['2:10-3:55', 'Anth1012', 'Endris K.', 'CR3214'], ['7:50-9:30', 'EmTe1012', 'Tewodros A.', 'CR3214']],
+            'Thursday': [['2:10-3:55', 'Math1041', 'Sefanit E.', 'CR3214'], ['7:50-9:30', 'EmTe1012', 'Tewodros A.', 'CR3137']],
+            'Friday': [['2:10-3:55', 'Hist1012', 'Alemnew G.', 'CR3214'], ['7:50-9:30', 'FLEN1012', 'Ezanawit A.', 'CR3214']]
+        }
+    };
+
+    const select = document.getElementById('sectionSelect');
+
+    function clearDisplay() {
+        document.getElementById('displayTitle').innerHTML = "Section " + select.value;
+        document.getElementById('scheduleContent').innerHTML = "ቀን በመምረጥ ፕሮግራሙን ይመልከቱ።";
+    }
+
+    function updateSchedule(day) {
+        const sec = select.value;
+        document.getElementById('displayTitle').innerHTML = `Section ${sec} - ${day}`;
+        
+        let html = "";
+        const schedule = sectionData[sec] ? sectionData[sec][day] : null;
+
+        if (schedule && schedule.length > 0) {
+            schedule.forEach(item => {
+                html += `
+                    <div class="schedule-item">
+                        <div class="item-main">
+                            <span>${item[1]}</span>
+                            <span class="time">${item[0]}</span>
+                        </div>
+                        <div class="item-sub">
+                            <span>${item[2]}</span>
+                            <span class="room">Room: ${item[3]}</span>
+                        </div>
+                    </div>`;
+            });
+        } else {
+            html = "<p style='text-align:center; color:#999;'>ለዚህ ቀን ምንም ክፍለ ጊዜ የለም።</p>";
+        }
+        document.getElementById('scheduleContent').innerHTML = html;
+    }
+</script>
+
+</body>
+</html>
