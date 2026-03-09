@@ -1,74 +1,58 @@
 <!DOCTYPE html>
-<html lang="am">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wollo Uni Info Hub</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="icon.png" type="image/png">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Wollo Uni Info Hub</h1>
-            <p>Wollo university-KIOT Project</p>
-        </header>
+        <h1>Wollo Uni kiot freshman Project</p>
+        
+        <p class="amharic-title">ሴክሽን ይምረጡ</p>
+        <select id="sectionSelect">
+            <option value="">-- Choose Section --</option>
+            <option value="A">Section A</option>
+            <option value="B">Section B</option>
+            <option value="C">Section C</option>
+            <option value="D">Section D</option>
+            <option value="E">Section E</option>
+            <option value="F">Section F</option>
+            <option value="G">Section G</option>
+            <option value="H">Section H</option>
+            <option value="I">Section I</option>
+            <option value="J">Section J</option>
+            <option value="K">Section K</option>
+            <option value="L">Section L</option>
+            <option value="M">Section M</option>
+            <option value="N">Section N</option>
+        </select>
 
-        <main>
-            <div class="selection-box">
-                <label for="sectionSelect">ሴክሽንዎን ይምረጡ፡</label>
-                <select id="sectionSelect">
-                    <option value="">ይምረጡ...</option>
-                    <option value="A">Section A</option>
-                    <option value="B">Section B</option>
-                    <option value="C">Section C</option>
-                    <option value="D">Section D</option>
-                    <option value="E">Section E</option>
-                    <option value="F">Section F</option>
-                    <option value="G">Section G</option>
-                    <option value="H">Section H</option>
-                    <option value="I">Section I</option>
-                    <option value="J">Section J</option>
-                    <option value="K">Section K</option>
-                    <option value="L">Section L</option>
-                    <option value="M">Section M</option>
-                    <option value="N">Section N</option>
-                </select>
-            </div>
+        <div class="day-selector">
+            <button class="day-btn">Monday</button>
+            <button class="day-btn">Tuesday</button>
+            <button class="day-btn">Wednesday</button>
+            <button class="day-btn">Thursday</button>
+            <button class="day-btn">Friday</button>
+        </div>
 
-            <div class="day-selector">
-                <button class="day-btn">Monday</button>
-                <button class="day-btn">Tuesday</button>
-                <button class="day-btn">Wednesday</button>
-                <button class="day-btn">Thursday</button>
-                <button class="day-btn">Friday</button>
-            </div>
-
-            <div id="scheduleDisplay" class="display-area">
-                <p class="placeholder-text">ሴክሽን እና ቀን ሲመርጡ ፕሮግራሙ እዚህ ይታያል።</p>
-            </div>
-        </main>
+        <div id="scheduleDisplay" class="display-area">
+            <p class="placeholder-text">ሴክሽን እና ቀን ሲመርጡ ስኬጅሉ እዚህ ጋር ይወጣል</p>
+        </div>
 
         <footer>
-            <div class="author-info">
-                <p><strong>ደራሲ (Author):</strong> Meseret.T</p>
-                <p><strong>መለያ ቁጥር (ID No):</strong> 1784/18</p>
-                <p><strong>ተቋም:</strong> ወሎ ዩኒቨርሲቲ (KIOT)</p>
-                <p>ይህ ኮድ ለ kiot freshman student የተዘጋጀ የግል ፈጠራ ነው።</p>
-            </div>
+            <p><strong>Developed By:</strong> Meseret.T</p>
+            <p><strong>ID:</strong> KIOT/1355/17</p>
+            <p>© 2026 Wollo University - KIOT Freshman Info Hub</p>
         </footer>
     </div>
 
     <script src="script.js"></script>
-
     <script>
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('Service Worker Registered!'))
-                    .catch(err => console.log('Registration Failed:', err));
-            });
+            navigator.serviceWorker.register('sw.js');
         }
     </script>
 </body>
