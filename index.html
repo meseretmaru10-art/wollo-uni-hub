@@ -12,14 +12,14 @@
     <div class="container">
         <header>
             <h1>Wollo Uni Info Hub</h1>
-            <p>Software Engineering - KIOT Project</p>
+            <p>Pre-Engineering Student Info Hub</p>
         </header>
 
         <main>
-            <div class="selection-box">
-                <label for="sectionSelect">ሴክሽንዎን ይምረጡ፡</label>
+            <div class="selection-group">
+                <label>ሴክሽን ይምረጡ</label>
                 <select id="sectionSelect">
-                    <option value="">ይምረጡ...</option>
+                    <option value="">-- Choose Section --</option>
                     <option value="A">Section A</option>
                     <option value="B">Section B</option>
                     <option value="C">Section C</option>
@@ -37,7 +37,7 @@
                 </select>
             </div>
 
-            <div class="day-selector">
+            <div class="days-grid">
                 <button class="day-btn">Monday</button>
                 <button class="day-btn">Tuesday</button>
                 <button class="day-btn">Wednesday</button>
@@ -45,18 +45,19 @@
                 <button class="day-btn">Friday</button>
             </div>
 
-            <div id="scheduleDisplay" class="display-area">
-                <p class="placeholder-text">ሴክሽን እና ቀን ሲመርጡ ፕሮግራሙ እዚህ ይታያል።</p>
+            <div id="scheduleDisplay" class="result-card">
+                <div class="initial-msg">
+                    <h3>Section - Day</h3>
+                    <p>ቀን በመምረጥ ፕሮግራሙን ይመልከቱ።</p>
+                </div>
             </div>
         </main>
 
-        <footer>
-            <div class="author-info">
-                <p><strong>ደራሲ (Author):</strong> Meseret.T</p>
-                <p><strong>መለያ ቁጥር (ID No):</strong> 1784/18</p>
-                <p><strong>ተቋም:</strong> ወሎ ዩኒቨርሲቲ (KIOT)</p>
-                <p>ይህ ኮድ ለ kiot freshman student የተዘጋጀ የግል ፈጠራ ነው።</p>
-            </div>
+        <footer class="author-card">
+            <p><strong>ደራሲ (Author):</strong> Meseret.T</p>
+            <p><strong>መለያ ቁጥር (ID No):</strong> Wour/1784/18</p>
+            <p><strong>ተቋም:</strong> ወሎ ዩኒቨርሲቲ (KIOT)</p>
+            <div class="note">ይህ ኮድ ለ kiot freshman student የተዘጋጀ የራሴ ፈጠራ ነው።</div>
         </footer>
     </div>
 
@@ -66,8 +67,8 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('Service Worker Registered!'))
-                    .catch(err => console.log('Registration Failed:', err));
+                    .then(reg => console.log('Service Worker Registered'))
+                    .catch(err => console.log('Service Worker Error', err));
             });
         }
     </script>
