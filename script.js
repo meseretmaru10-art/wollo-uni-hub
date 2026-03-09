@@ -8,7 +8,7 @@ const scheduleData = {
   },
   "B": {
     "Monday": [{ c: "EmTe1012", t: "3:05-3:55", r: "CR3202" }, { c: "Math1041", t: "8:50-9:30", r: "CR3202" }],
-    "Tuesday": [{ c: "ECEg1052", t: "3:05-3:55", r: "CR3202" }, { c: "EmTe1012", t: "8:50-9:30", r: "CR3202" }, { c: "Math1041", t: "9:35-10:20", r: "CR3202" }],
+    "Tuesday": [{ c: "ECEg1052", t: "3:05-3:55", r: "CR3202" }, { c: "EmTe1012", t: "8:50-9:30", r: "CR3202" }],
     "Wednesday": [{ c: "ECEg1052", t: "2:10-3:00", r: "CR3202" }, { c: "Math1041", t: "8:50-10:20", r: "CR3202" }],
     "Thursday": [{ c: "Anth1012", t: "2:10-3:00", r: "CR3202" }, { c: "MCiE1012", t: "8:50-9:30", r: "CR3202" }],
     "Friday": [{ c: "Hist1012", t: "2:10-3:00", r: "CR3202" }, { c: "FLEN1012", t: "9:35-10:20", r: "CR3202" }]
@@ -16,7 +16,7 @@ const scheduleData = {
   "C": {
     "Monday": [{ c: "ECEg1052", t: "2:10-3:00", r: "CR3203" }, { c: "EmTe1012", t: "9:35-10:20", r: "CR3203" }],
     "Tuesday": [{ c: "Math1041", t: "2:10-3:55", r: "CR3203" }, { c: "Hist1012", t: "8:50-9:30", r: "CR3203" }],
-    "Wednesday": [{ c: "Anth1012", t: "2:10-3:00", r: "CR3203" }, { c: "EmTe1012", t: "3:05-3:55", r: "CR3203" }, { c: "MCiE1012", t: "9:35-10:20", r: "CR3203" }],
+    "Wednesday": [{ c: "Anth1012", t: "2:10-3:00", r: "CR3203" }, { c: "MCiE1012", t: "9:35-10:20", r: "CR3203" }],
     "Thursday": [{ c: "Math1041", t: "4:00-4:50", r: "CR3203" }, { c: "ECEg1052", t: "8:50-10:20", r: "CR3203" }],
     "Friday": [{ c: "FLEN1012", t: "2:10-3:55", r: "CR3203" }]
   },
@@ -25,7 +25,7 @@ const scheduleData = {
     "Tuesday": [{ c: "ECEg1052", t: "2:10-3:00", r: "CR3204" }, { c: "MCiE1012", t: "3:05-3:55", r: "CR3204" }],
     "Wednesday": [{ c: "FLEN1012", t: "2:10-3:55", r: "CR3204" }, { c: "EmTe1012", t: "8:50-9:30", r: "CR3204" }],
     "Thursday": [{ c: "Math1041", t: "2:10-3:55", r: "CR3204" }, { c: "Math1041", t: "9:35-11:10", r: "CR3204" }],
-    "Friday": [{ c: "Anth1012", t: "2:10-3:00", r: "CR3204" }, { c: "EmTe1012", t: "3:05-3:55", r: "CR3204" }, { c: "Hist1012", t: "8:50-10:20", r: "CR3204" }]
+    "Friday": [{ c: "Anth1012", t: "2:10-3:00", r: "CR3204" }, { c: "Hist1012", t: "8:50-10:20", r: "CR3204" }]
   },
   "E": {
     "Monday": [{ c: "ECEg1052", t: "2:10-3:00", r: "CR3205" }],
@@ -125,15 +125,22 @@ function updateDisplay(day) {
         return;
     }
 
-    const sessions = scheduleData[selectedSection] ? scheduleData[selectedSection][day] : [];
+    const sessions = scheduleData[selectedSection][day];
     let html = `<h3>Section ${selectedSection} - ${day}</h3>`;
 
     if (!sessions || sessions.length === 0) {
-        html += `<p class='placeholder-text'>ለዚህ ቀን ክፍለ ጊዜ የለም።</p>`;
+        html += `<p class='no-class'>ለዚህ ቀን ምንም ክፍለ ጊዜ የለም።</p>`;
     } else {
         sessions.forEach(s => {
             html += `
                 <div class="schedule-item">
                     <div class="course-info">
-                        <span class="course-name">${s.c}</span><br>
-                        <span class="room-name">Room
+                        <span class="course-name">${s.c}</span>
+                        <span class="room-name">Room: ${s.r}</span>
+                    </div>
+                    <div class="time-info">${s.t}</div>
+                </div>`;
+        });
+    }
+    display.innerHTML = html;
+}

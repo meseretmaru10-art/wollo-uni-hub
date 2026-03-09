@@ -1,10 +1,7 @@
 {
+  "short_name": "WolloHub",
   "name": "Wollo Uni Info Hub",
-  "short_name": "KIOT App",
-  "start_url": ".",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1a73e8",
+  "description": "Information Hub for Wollo University KIOT Students",
   "icons": [
     {
       "src": "icon.png",
@@ -16,5 +13,9 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "theme_color": "#1e88e5",
+  "background_color": "#ffffff"
 }

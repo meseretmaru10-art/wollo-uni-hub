@@ -1,93 +1,105 @@
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: #f0f2f5;
     margin: 0;
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 15px;
 }
 
 .container {
     background-color: white;
-    width: 95%;
-    max-width: 400px;
-    border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    padding: 15px;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 20px;
     text-align: center;
 }
 
-h1 { color: #1a73e8; font-size: 1.4em; margin-bottom: 5px; }
-.coc-title { font-size: 0.8em; color: #666; margin-top: 0; }
-.amharic-title { font-size: 0.9em; margin-bottom: 8px; font-weight: bold; }
+h1 { color: #1a73e8; font-size: 1.8em; margin-bottom: 10px; }
 
+/* የሴክሽን መምረጫ */
 #sectionSelect {
     width: 100%;
-    padding: 10px;
-    border-radius: 8px;
+    padding: 12px;
+    border-radius: 10px;
     border: 1px solid #ddd;
-    font-size: 0.9em;
-    margin-bottom: 15px;
+    font-size: 1em;
+    margin-bottom: 20px;
 }
 
+/* የቀናት መምረጫ ቁልፎች */
 .day-selector {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 5px;
-    margin-bottom: 15px;
+    gap: 8px;
+    margin-bottom: 20px;
 }
 
 .day-btn {
-    padding: 8px 12px;
-    border-radius: 6px;
+    padding: 10px 15px;
+    border-radius: 8px;
     border: none;
     background-color: #e8f0fe;
     color: #1967d2;
     font-weight: 600;
-    font-size: 0.85em;
     cursor: pointer;
 }
 
-.day-btn.active { background-color: #1a73e8; color: white; }
-
-.display-area { 
-    background-color: #f8fafd; 
-    border-radius: 12px; 
-    padding: 12px; 
-    min-height: 100px;
+.day-btn.active {
+    background-color: #1a73e8;
+    color: white;
 }
 
+/* የስኬጅል አቀማመጥ (ልክ እንደ ምስሉ) */
 .schedule-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
-    margin: 8px 0;
-    padding: 12px;
-    border-radius: 10px;
-    border-left: 4px solid #1a73e8;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    background: #ffffff;
+    margin: 12px 0;
+    padding: 15px;
+    border-radius: 15px;
+    border-left: 6px solid #1a73e8;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
-.course-info { text-align: left; }
-.course-name { font-weight: bold; font-size: 0.9em; color: #333; }
-.room-name { font-size: 0.75em; color: #777; }
+.course-info {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
 
+.course-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #202124;
+}
+
+.room-name {
+    font-size: 0.9em;
+    color: #5f6368;
+    margin-top: 4px;
+}
+
+/* ሰዓቱ በቀኝ በኩል በቀይ ከለር */
 .time-info {
     color: #d93025;
     font-weight: bold;
-    font-size: 0.8em;
+    font-size: 1em;
     background: #fce8e6;
-    padding: 4px 8px;
-    border-radius: 15px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
 }
 
 footer {
-    margin-top: 15px;
-    padding: 10px;
+    margin-top: 20px;
+    padding: 15px;
     background: #f8f9fa;
-    border-radius: 10px;
-    font-size: 0.75em;
+    border-radius: 12px;
     text-align: left;
+    font-size: 0.9em;
 }
