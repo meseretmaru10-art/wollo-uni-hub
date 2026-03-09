@@ -41,7 +41,7 @@ const scheduleData = {
         "Thursday": [{ c: "Math1041", t: "2:10-3:00", r: "CR3206" }, { c: "FLEN1012", t: "8:50-10:20", r: "CR3206" }],
         "Friday": [{ c: "ECEg1052", t: "2:10-3:00", r: "CR3206" }, { c: "MCiE1012", t: "3:05-3:55", r: "CR3206" }]
     },
-    
+   
     "G": {
         "Monday": [{ c: "Math1041", t: "2:10-3:55", r: "CR3207" }, { c: "ECEg1052", t: "8:50-10:20", r: "CR3207" }],
         "Tuesday": [{ c: "Math1041", t: "2:10-3:00", r: "CR3207" }, { c: "EmTe1012", t: "8:50-10:20", r: "CR3207" }],
@@ -99,6 +99,7 @@ const scheduleData = {
         "Friday": [{ c: "Hist1012", t: "2:10-3:55", r: "CR3214" }, { c: "FLEN1012", t: "8:50-10:20", r: "CR3214" }]
     }
 };
+
 let currentSection = "";
 
 document.getElementById('sectionSelect').addEventListener('change', (e) => {
