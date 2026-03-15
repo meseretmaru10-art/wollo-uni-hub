@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wollo Uni Info Hub</title>
-    <link rel="stylesheet" href="style.css">
+    
     <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#007bff">
+    <link rel="apple-touch-icon" href="icon.png">
     <link rel="icon" href="icon.png" type="image/png">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#007bff">
-<link rel="apple-touch-icon" href="icon.png">
     <div class="container">
         <header>
             <h1>Wollo Uni Info Hub</h1>
@@ -70,9 +71,10 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('Service Worker Registered'))
-                    .catch(err => console.log('Service Worker Error', err));
+                    .then(reg => console.log('Service Worker Registered Successfully'))
+                    .catch(err => console.log('Service Worker Registration Failed', err));
             });
         }
+    </script>
 </body>
 </html>
