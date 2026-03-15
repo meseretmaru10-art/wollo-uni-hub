@@ -1,45 +1,41 @@
-const cacheName = 'wollo-uni-v2';
+const CACHE_NAME = 'wollo-uni-hub-v6';
+
+// ያለ ዳታ እንዲከፈቱ የሚቀመጡ ዋና ዋና ፋይሎች ዝርዝር
 const assets = [
   './',
   './index.html',
+  './manifest.json',
   './style.css',
   './script.js',
-  './icon.png',
-  './manifest.json'
+  './icon.png'
 ];
 
-// 1. ፋይሎቹን በስልኩ ሜሞሪ ላይ ለመጫን (Install)
-self.addEventListener('install', e => {
+// ፋይሎቹን መጀመሪያ ሲከፈት በስልኩ ላይ መጫን
+self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.open(cacheName).then(cache => {
-      console.log('Caching assets for offline use...');
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log('Caching main assets for offline use...');
       return cache.addAll(assets);
     })
   );
 });
 
-// 2. አሮጌ መረጃዎችን ለማጥፋት (Activate)
-self.addEventListener('activate', e => {
+// አሮጌ ካሽ ካለ አዲሱን ስሪት ለማስገባት ማጽዳት
+self.addEventListener('activate', (e) => {
   e.waitUntil(
-    caches.keys().then(keys => {
+    caches.keys().then((keys) => {
       return Promise.all(
-        keys.filter(key => key !== cacheName)
-            .map(key => caches.delete(key))
+        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
       );
     })
   );
 });
 
-// 3. ኢንተርኔት በሌለበት ጊዜ መረጃውን ለማቅረብ (Fetch)
-self.addEventListener('fetch', e => {
+// ዳታ በሌለበት ጊዜ መረጃን ከስልኩ ካሽ መጥራት
+self.addEventListener('fetch', (e) => {
   e.respondWith(
-    caches.match(e.request).then(response => {
-      return response || fetch(e.request);
-    }).catch(() => {
-      // ፋይሉ በካሽ ውስጥ ከሌለ እና ኢንተርኔት ከጠፋ
-      if (e.request.mode === 'navigate') {
-        return caches.match('./index.html');
-      }
+    caches.match(e.request).then((res) => {
+      return res || fetch(e.request);
     })
   );
 });
