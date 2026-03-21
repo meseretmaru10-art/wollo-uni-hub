@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wollo Uni Info Hub</title>
+    <title>Wollo Uni Info Hub - KIOT</title>
     
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#007bff">
@@ -15,8 +15,9 @@
 <body>
     <div class="container">
         <header>
-            <h1>Wollo Uni Info Hub</h1>
-            <p>Pre-Engineering Student Info Hub</p>
+            <h1>Wollo University</h1>
+            <h2>Kombolcha Institute of Technology (KIOT)</h2>
+            <p>Freshman Student Info Hub</p>
         </header>
 
         <main>
@@ -42,11 +43,11 @@
             </div>
 
             <div class="days-grid">
-                <button class="day-btn">Monday</button>
-                <button class="day-btn">Tuesday</button>
-                <button class="day-btn">Wednesday</button>
-                <button class="day-btn">Thursday</button>
-                <button class="day-btn">Friday</button>
+                <button class="day-btn" onclick="showSchedule('Monday')">Monday</button>
+                <button class="day-btn" onclick="showSchedule('Tuesday')">Tuesday</button>
+                <button class="day-btn" onclick="showSchedule('Wednesday')">Wednesday</button>
+                <button class="day-btn" onclick="showSchedule('Thursday')">Thursday</button>
+                <button class="day-btn" onclick="showSchedule('Friday')">Friday</button>
             </div>
 
             <div id="scheduleDisplay" class="result-card">
@@ -58,22 +59,50 @@
         </main>
 
         <footer class="author-card">
-            <p><strong>ደራሲ (Author):</strong> Meseret.T</p>
-            <p><strong>መለያ ቁጥር (ID No):</strong> Wour/1784/18</p>
-            <p><strong>ተቋም:</strong> ወሎ ዩኒቨርሲቲ (KIOT)</p>
-            <div class="note">ይህ ኮድ ለ kiot freshman student የተዘጋጀ የራሴ ፈጠራ ነው።</div>
+            <p><strong>Meseret T.</strong></p>
+            <p><strong>ID: 1784/18</strong></p>
+            <p><strong>Wollo University</strong></p>
+            <p><strong>KIOT</strong></p>
+            <div class="note">ይህ ኮድ ለ KIOT freshman student የተዘጋጀ የራሴ ፈጠራ ነው።</div>
         </footer>
     </div>
 
     <script src="script.js"></script>
 
     <script>
+        // ሰርቪስ ወርከሩን ለመመዝገብ
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('Service Worker Registered Successfully'))
-                    .catch(err => console.log('Service Worker Registration Failed', err));
+                    .then(reg => console.log('Service Worker Registered'))
+                    .catch(err => console.log('Registration Failed', err));
             });
+        }
+
+        // ቀን ሲመረጥ ዳታውን የሚያሳይ ፋንክሽን
+        function showSchedule(day) {
+            const section = document.getElementById('sectionSelect').value;
+            const display = document.getElementById('scheduleDisplay');
+            
+            if (!section) {
+                alert("እባክዎን መጀመሪያ ሴክሽን ይምረጡ!");
+                return;
+            }
+
+            const data = scheduleData[section][day];
+            let html = `<h3>Section ${section} - ${day}</h3>`;
+            
+            if (data && data.length > 0) {
+                html += "<ul>";
+                data.forEach(item => {
+                    html += `<li><strong>${item.c}</strong> | ${item.t} | Room: ${item.r}</li>`;
+                });
+                html += "</ul>";
+            } else {
+                html += "<p>ለዚህ ቀን ምንም ክፍለ ጊዜ የለም።</p>";
+            }
+            
+            display.innerHTML = html;
         }
     </script>
 </body>
