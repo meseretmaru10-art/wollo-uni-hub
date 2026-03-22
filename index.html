@@ -4,13 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wollo Uni Info Hub - KIOT</title>
-    
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#007bff">
-    <link rel="apple-touch-icon" href="icon.png">
-    <link rel="icon" href="icon.png" type="image/png">
-    
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <div class="container">
@@ -62,47 +57,15 @@
             <p><strong>Meseret T.</strong></p>
             <p><strong>ID: 1784/18</strong></p>
             <p><strong>Wollo University</strong></p>
-            <p><strong>KIOT</strong></p>
+            <p><strong>KIOT - Software Engineering Applicant</strong></p>
             <div class="note">ይህ ኮድ ለ KIOT freshman student የተዘጋጀ የራሴ ፈጠራ ነው።</div>
         </footer>
     </div>
 
     <script src="script.js"></script>
-
     <script>
-        // ሰርቪስ ወርከሩን ለመመዝገብ
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('Service Worker Registered'))
-                    .catch(err => console.log('Registration Failed', err));
-            });
-        }
-
-        // ቀን ሲመረጥ ዳታውን የሚያሳይ ፋንክሽን
-        function showSchedule(day) {
-            const section = document.getElementById('sectionSelect').value;
-            const display = document.getElementById('scheduleDisplay');
-            
-            if (!section) {
-                alert("እባክዎን መጀመሪያ ሴክሽን ይምረጡ!");
-                return;
-            }
-
-            const data = scheduleData[section][day];
-            let html = `<h3>Section ${section} - ${day}</h3>`;
-            
-            if (data && data.length > 0) {
-                html += "<ul>";
-                data.forEach(item => {
-                    html += `<li><strong>${item.c}</strong> | ${item.t} | Room: ${item.r}</li>`;
-                });
-                html += "</ul>";
-            } else {
-                html += "<p>ለዚህ ቀን ምንም ክፍለ ጊዜ የለም።</p>";
-            }
-            
-            display.innerHTML = html;
+            navigator.serviceWorker.register('sw.js');
         }
     </script>
 </body>
