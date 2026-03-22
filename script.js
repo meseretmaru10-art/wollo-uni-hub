@@ -98,3 +98,29 @@ const scheduleData = {
         "Friday": [{ c: "Hist1012", t: "2:10-4:50", r: "CR3214" }, { c: "FLEN1012", t: "8:50-11:10", r: "CR3214" }]
     }
 };
+
+// ይህ ፋንክሽን በተኖቹ ሲነኩ ፕሮግራሙን ያወጣል።
+function showSchedule(day) {
+    const section = document.getElementById('sectionSelect').value;
+    const display = document.getElementById('scheduleDisplay');
+    
+    if (!section) {
+        alert("እባክዎን መጀመሪያ ሴክሽን ይምረጡ!");
+        return;
+    }
+
+    const data = scheduleData[section][day];
+    let html = `<h3>Section ${section} - ${day}</h3>`;
+    
+    if (data && data.length > 0) {
+        html += "<ul>";
+        data.forEach(item => {
+            html += `<li><strong>${item.c}</strong> | ${item.t} | Room: ${item.r}</li>`;
+        });
+        html += "</ul>";
+    } else {
+        html += "<p>ለዚህ ቀን ምንም ክፍለ ጊዜ የለም።</p>";
+    }
+    
+    display.innerHTML = html;
+}
