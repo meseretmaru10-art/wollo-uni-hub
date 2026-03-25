@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wollo Uni Info Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <img src="1774415839476.jpeg" alt="WU Logo" class="logo">
+            <h1 class="title-blue">Wollo University</h1>
+            <h2 class="subtitle">Kombolcha Institute of Technology (KIOT)</h2>
+            <p class="tagline">Freshman Student Info Hub</p>
+        </header>
+
+        <div class="selection-box">
+            <label>ሴክሽን ይምረጡ</label>
+            <select id="sectionSelect" onchange="resetDisplay()">
+                <option value="D">Section D</option>
+                <option value="A">Section A</option>
+                <option value="B">Section B</option>
+                <option value="C">Section C</option>
+                <option value="E">Section E</option>
+                <option value="F">Section F</option>
+                <option value="G">Section G</option>
+                <option value="H">Section H</option>
+                <option value="I">Section I</option>
+                <option value="J">Section J</option>
+                <option value="K">Section K</option>
+                <option value="L">Section L</option>
+                <option value="M">Section M</option>
+                <option value="N">Section N</option>
+            </select>
+        </div>
+
+        <div class="button-group">
+            <button class="day-btn" onclick="showSchedule('Monday')">Monday</button>
+            <button class="day-btn" onclick="showSchedule('Tuesday')">Tuesday</button>
+            <button class="day-btn" onclick="showSchedule('Wednesday')">Wednesday</button>
+            <button class="day-btn" onclick="showSchedule('Thursday')">Thursday</button>
+            <button class="day-btn" onclick="showSchedule('Friday')">Friday</button>
+        </div>
+
+        <div id="scheduleDisplay" class="display-card">
+            <h3 id="displayTitle">Section - Day</h3>
+            <div class="line"></div>
+            <div id="displayText">ቀን በመምረጥ ፕሮግራሙን ይመልከቱ።</div>
+        </div>
+
+        <footer>
+            <p><strong>Meseret T. | ID: 1784/18</strong></p>
+            <p>Wollo University | KIOT</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
