@@ -28,19 +28,19 @@ function showSchedule(day) {
     if (data && data.length > 0) {
         let listHtml = "";
         data.forEach(item => {
-            // Course በተለየ መስመር፣ Time እና Room በተለየ መስመር
+            // ምልክቶች (Icons) በሙሉ ተወግደዋል
             listHtml += `
                 <div class="schedule-card">
-                    <div class="course-name">📚 <b>${item.c}</b></div>
+                    <div class="course-name">${item.c}</div>
                     <div class="details-row">
-                        <span>🕒 ${item.t}</span>
-                        <span>📍 <span class="room-tag">${item.r}</span></span>
+                        <span>${item.t}</span>
+                        <span><span class="room-tag">${item.r}</span></span>
                     </div>
                 </div>`;
         });
         text.innerHTML = listHtml;
     } else {
-        text.innerHTML = "<p style='padding:20px; color:#999;'>ምንም ክፍለ ጊዜ የለም (Free Time)።</p>";
+        text.innerHTML = "<p style='padding:20px; color:#999;'>No Classes Today</p>";
     }
 }
 
