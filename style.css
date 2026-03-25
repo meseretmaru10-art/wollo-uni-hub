@@ -1,25 +1,76 @@
-:root { --primary-blue: #2196F3; --bg-gray: #f8faff; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-gray); display: flex; justify-content: center; padding: 20px; margin: 0; }
-.container { width: 100%; max-width: 420px; background: white; padding: 30px 20px; border-radius: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
-header h1 { color: var(--primary-blue); text-align: center; font-size: 2.2em; margin-bottom: 5px; }
-header p { text-align: center; color: #888; margin-top: 0; font-size: 0.95em; }
+body {
+    background-color: #f0f5ff;
+    display: flex;
+    justify-content: center;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
 
-.selection-group { margin-top: 25px; text-align: center; }
-.selection-group label { display: block; font-weight: bold; margin-bottom: 10px; font-size: 1.1em; color: #333; }
-select { width: 100%; padding: 15px; border-radius: 15px; border: 2px solid var(--primary-blue); font-size: 1.1em; outline: none; background: white; }
+.app-container {
+    background-color: white;
+    width: 100%;
+    max-width: 380px;
+    border-radius: 40px;
+    padding: 30px 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+}
 
-.days-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 25px 0; }
-.day-btn { padding: 12px 5px; border: none; background: var(--primary-blue); color: white; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 0.9em; }
-.day-btn.active { background: #1565C0; box-shadow: inset 0 2px 5px rgba(0,0,0,0.2); }
+.logo { width: 85px; margin-bottom: 10px; }
+.title-blue { color: #2196F3; font-size: 24px; margin: 5px 0; }
+.subtitle { font-size: 18px; color: #333; margin: 5px 0; font-weight: bold; }
+.tagline { color: #888; font-size: 14px; margin-bottom: 20px; }
 
-.result-card { background: #fff; border: 1px solid #eee; border-radius: 25px; padding: 20px; min-height: 200px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-.initial-msg { text-align: center; padding-top: 40px; }
-.initial-msg h3 { color: var(--primary-blue); border-bottom: 1px solid #eee; padding-bottom: 10px; }
-.schedule-item { border-bottom: 1px dotted #ddd; padding: 15px 0; display: flex; justify-content: space-between; align-items: center; }
-.course-name { font-weight: bold; font-size: 1.1em; }
-.room-name { color: #4CAF50; font-size: 0.85em; display: block; }
-.time-tag { color: #e57373; font-weight: bold; }
+select {
+    width: 90%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1.5px solid #2196F3;
+    font-size: 16px;
+    outline: none;
+    margin-top: 10px;
+}
 
-.author-card { background: #e3f2fd; border: 1px dashed var(--primary-blue); border-radius: 20px; padding: 15px; margin-top: 30px; font-size: 0.9em; line-height: 1.8; }
-.author-card p { margin: 2px 0; color: #333; }
-.note { font-style: italic; border-top: 1px solid #bbdefb; margin-top: 8px; padding-top: 5px; color: #555; }
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+.day-btn {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.display-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 30px;
+    padding: 20px;
+    min-height: 180px;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.line { height: 1px; background: #eee; margin: 15px 0; }
+
+/* Schedule Styling */
+.schedule-card {
+    text-align: left;
+    padding: 10px 0;
+    border-bottom: 1px solid #f9f9f9;
+}
+.course-name { color: #d32f2f; font-size: 17px; margin-bottom: 5px; }
+.details-row { display: flex; justify-content: space-between; font-size: 15px; color: #555; }
+.room-tag { color: #2196F3; font-weight: bold; background: #e3f2fd; padding: 2px 6px; border-radius: 4px; }
+
+/* Footer Styling */
+.footer-line { height: 1px; background: #eee; margin: 20px 0 15px 0; }
+.footer-content { font-size: 14px; color: #666; line-height: 0.5; }
