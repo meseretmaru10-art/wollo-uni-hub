@@ -2,7 +2,7 @@ body {
     background-color: #f0f5ff;
     display: flex;
     justify-content: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     margin: 0;
     padding: 20px;
 }
@@ -10,17 +10,17 @@ body {
 .app-container {
     background-color: white;
     width: 100%;
-    max-width: 400px;
-    border-radius: 35px;
-    padding: 25px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    max-width: 380px;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     text-align: center;
 }
 
-.logo { width: 80px; margin-bottom: 10px; }
-.title-blue { color: #2196F3; font-size: 22px; margin: 5px 0; }
-.subtitle { font-size: 16px; color: #333; margin: 2px 0; }
-.tagline { color: #777; font-size: 13px; margin-bottom: 20px; }
+.logo { width: 70px; margin-bottom: 10px; }
+.title-blue { color: #1e88e5; font-size: 22px; margin: 5px 0; }
+.subtitle { font-size: 15px; color: #333; margin: 0; }
+.tagline { color: #888; font-size: 12px; margin-bottom: 15px; }
 
 select {
     width: 100%;
@@ -28,70 +28,65 @@ select {
     border-radius: 12px;
     border: 2px solid #e3f2fd;
     font-size: 16px;
-    background-color: #fcfdfe;
+    background: #fff;
+    margin-bottom: 15px;
 }
 
 .button-group {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
-    margin: 20px 0;
+    gap: 5px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .day-btn {
-    background-color: #2196F3;
+    background-color: #1e88e5;
     color: white;
     border: none;
-    padding: 8px 15px;
+    padding: 10px 12px;
     border-radius: 10px;
-    font-weight: 600;
+    font-size: 13px;
     cursor: pointer;
-    transition: 0.3s;
 }
-
-.day-btn:active { transform: scale(0.95); }
 
 .display-card {
-    background-color: #fff;
-    border: 1px solid #f0f0f0;
+    background: #fdfdfd;
+    border: 1px solid #eee;
     border-radius: 20px;
     padding: 15px;
-    min-height: 150px;
+    min-height: 200px;
 }
 
-.line { height: 1px; background: #eee; margin: 15px 0; }
+.line { height: 1px; background: #f0f0f0; margin: 10px 0; }
 
-/* Schedule Styling - No Icons */
 .schedule-card {
     text-align: left;
-    padding: 12px 5px;
-    border-bottom: 1px solid #f7f7f7;
+    padding: 15px 0;
+    border-bottom: 1px solid #f9f9f9;
 }
 
 .course-name { 
-    color: #333; 
+    color: #222; 
     font-size: 17px; 
-    margin-bottom: 6px; 
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .details-row { 
     display: flex; 
     justify-content: space-between; 
     font-size: 14px; 
-    color: #666; 
+    color: #555; 
 }
 
 .room-tag { 
-    color: #2196F3; 
+    color: #1e88e5; 
     font-weight: bold; 
-    background: #f0f7ff; 
+    background: #eef7ff; 
     padding: 2px 8px; 
-    border-radius: 5px; 
+    border-radius: 4px; 
 }
 
-/* Footer Styling */
-.footer-line { height: 1px; background: #eee; margin: 20px 0 10px 0; }
-.footer-content { font-size: 13px; color: #555; line-height: 1.4; }
-.footer-content p { margin: 2px 0; }
+footer { margin-top: 20px; font-size: 13px; color: #666; }
+.footer-line { height: 1px; background: #eee; margin-bottom: 10px; }
