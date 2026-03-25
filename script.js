@@ -1,3 +1,4 @@
+// በሁሉም ሴክሽኖች የተሞላ የፕሮግራም መረጃ
 const scheduleData = {
     "A": { "Monday": [{ c: "Math1041", t: "2:10-4:50", r: "CR3201" }, { c: "Hist1012", t: "8:50-10:20", r: "CR3201" }], "Tuesday": [{ c: "FLEN1012", t: "8:50-11:10", r: "CR3201" }], "Wednesday": [{ c: "ECEg1052", t: "2:10-3:55", r: "CR3201" }, { c: "MCiE1012", t: "4:00-5:45", r: "CR3201" }, { c: "EmTe1012", t: "8:50-11:10", r: "CR3201" }], "Thursday": [{ c: "Anth1012", t: "2:10-3:55", r: "CR3201" }, { c: "Math1041", t: "9:30-11:10", r: "CR3201" }], "Friday": [{ c: "EmTe1012", t: "2:10-3:55", r: "CR3201" }, { c: "ECEg1052", t: "8:50-11:10", r: "CR3201" }] },
     "B": { "Monday": [{ c: "EmTe1012", t: "2:10-4:50", r: "CR3202" }, { c: "Math1041", t: "8:50-11:10", r: "CR3202" }], "Tuesday": [{ c: "ECEg1052", t: "2:10-4:50", r: "CR3202" }, { c: "EmTe1012", t: "7:50-8:40", r: "CR3202" }, { c: "Math1041", t: "9:30-11:10", r: "CR3202" }], "Wednesday": [{ c: "Free", t: "-", r: "-" }], "Thursday": [{ c: "ECEg", t: "2:10-3:55", r: "CR3202" }, { c: "Anth1012", t: "4:00-5:45", r: "CR3202" }, { c: "MCiE1012", t: "8:50-10:20", r: "CR3202" }], "Friday": [{ c: "Hist1012", t: "2:10-4:50", r: "CR3202" }, { c: "FLEN1012", t: "8:50-11:10", r: "CR3202" }] },
@@ -15,13 +16,17 @@ const scheduleData = {
     "N": { "Monday": [{ c: "ECEg1052", t: "2:10-4:50", r: "CR3214" }, { c: "Math1041", t: "8:50-10:20", r: "CR3214" }], "Tuesday": [{ c: "ECEg1052", t: "2:10-3:55", r: "CR3214" }, { c: "MCiE1012", t: "4:00-5:45", r: "CR3214" }], "Wednesday": [{ c: "Anth1012", t: "2:10-3:55", r: "CR3214" }, { c: "EmTe1012", t: "8:50-11:10", r: "CR3137" }], "Thursday": [{ c: "Math1041", t: "2:10-3:55", r: "CR3214" }, { c: "EmTe1012", t: "4:00-5:45", r: "CR3137" }], "Friday": [{ c: "Hist1012", t: "2:10-4:50", r: "CR3214" }, { c: "FLEN1012", t: "8:50-11:10", r: "CR3214" }] }
 };
 
+/**
+ * ፕሮግራሙን አውጥቶ የሚያሳይ ፈንክሽን
+ * ያለምንም ኢንተርኔት (Offline) ይሰራል
+ */
 function showSchedule(day) {
     const section = document.getElementById('sectionSelect').value;
     const title = document.getElementById('displayTitle');
     const text = document.getElementById('displayText');
     
     if (!section) {
-        alert("መጀመሪያ ሴክሽን ይምረጡ!");
+        alert("እባክህ መጀመሪያ ሴክሽን ምረጥ!");
         return;
     }
 
@@ -31,6 +36,7 @@ function showSchedule(day) {
     if (data && data.length > 0) {
         let listHtml = "";
         data.forEach(item => {
+            // ምንም አይነት ምልክት (Icons) የለውም
             listHtml += `
                 <div class="schedule-card">
                     <div class="course-name">${item.c}</div>
@@ -42,11 +48,14 @@ function showSchedule(day) {
         });
         text.innerHTML = listHtml;
     } else {
-        text.innerHTML = "<p style='padding:20px; color:#999;'>Free Time</p>";
+        text.innerHTML = "<p style='padding:20px; color:#999; font-weight:bold;'>ክፍል የለም (Free Time)</p>";
     }
 }
 
+/**
+ * ሴክሽን ሲቀየር ማሳያውን የሚያጸዳ ፈንክሽን
+ */
 function resetDisplay() {
-    document.getElementById('displayTitle').innerText = "Section - Day";
+    document.getElementById('displayTitle').innerText = "ፕሮግራም";
     document.getElementById('displayText').innerText = "ቀን በመምረጥ ፕሮግራሙን ይመልከቱ።";
 }
