@@ -11,13 +11,13 @@
         <header>
             <img src="1774415839476.jpeg" alt="WU Logo" class="logo">
             <h1 class="title-blue">Wollo University</h1>
-            <h2 class="subtitle">Kombolcha Institute of Technology (KIOT)</h2>
+            <h2 class="subtitle">KIOT</h2>
             <p class="tagline">Freshman Student Info Hub</p>
         </header>
 
         <div class="selection-box">
-            <label>ሴክሽን ይምረጡ</label>
             <select id="sectionSelect" onchange="resetDisplay()">
+                <option value="" disabled selected>ሴክሽን ይምረጡ</option>
                 <option value="D">Section D</option>
                 <option value="A">Section A</option>
                 <option value="B">Section B</option>
@@ -36,15 +36,15 @@
         </div>
 
         <div class="button-group">
-            <button class="day-btn" onclick="showSchedule('Monday')">Monday</button>
-            <button class="day-btn" onclick="showSchedule('Tuesday')">Tuesday</button>
-            <button class="day-btn" onclick="showSchedule('Wednesday')">Wednesday</button>
-            <button class="day-btn" onclick="showSchedule('Thursday')">Thursday</button>
-            <button class="day-btn" onclick="showSchedule('Friday')">Friday</button>
+            <button class="day-btn" onclick="showSchedule('Monday')">Mon</button>
+            <button class="day-btn" onclick="showSchedule('Tuesday')">Tue</button>
+            <button class="day-btn" onclick="showSchedule('Wednesday')">Wed</button>
+            <button class="day-btn" onclick="showSchedule('Thursday')">Thu</button>
+            <button class="day-btn" onclick="showSchedule('Friday')">Fri</button>
         </div>
 
         <div id="scheduleDisplay" class="display-card">
-            <h3 id="displayTitle">Section - Day</h3>
+            <h3 id="displayTitle">ፕሮግራም</h3>
             <div class="line"></div>
             <div id="displayText">ቀን በመምረጥ ፕሮግራሙን ይመልከቱ።</div>
         </div>
