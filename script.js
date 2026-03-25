@@ -20,7 +20,10 @@ function showSchedule(day) {
     const title = document.getElementById('displayTitle');
     const text = document.getElementById('displayText');
     
-    if (!section) return;
+    if (!section) {
+        alert("መጀመሪያ ሴክሽን ይምረጡ!");
+        return;
+    }
 
     const data = scheduleData[section][day];
     title.innerText = `Section ${section} - ${day}`;
@@ -28,19 +31,18 @@ function showSchedule(day) {
     if (data && data.length > 0) {
         let listHtml = "";
         data.forEach(item => {
-            // ምልክቶች (Icons) በሙሉ ተወግደዋል
             listHtml += `
                 <div class="schedule-card">
                     <div class="course-name">${item.c}</div>
                     <div class="details-row">
                         <span>${item.t}</span>
-                        <span><span class="room-tag">${item.r}</span></span>
+                        <span class="room-tag">${item.r}</span>
                     </div>
                 </div>`;
         });
         text.innerHTML = listHtml;
     } else {
-        text.innerHTML = "<p style='padding:20px; color:#999;'>No Classes Today</p>";
+        text.innerHTML = "<p style='padding:20px; color:#999;'>Free Time</p>";
     }
 }
 
