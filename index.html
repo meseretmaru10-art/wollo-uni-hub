@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wollo Uni Info Hub</title>
     <link rel="stylesheet" href="style.css">
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0d47a1">
+    <script>
+      if('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js');
+        });
+      }
+    </script>
 </head>
 <body>
     <div class="app-container">
         <header>
-            <img src="1774415839476.jpeg" alt="WU Logo" class="logo">
+            <img src="icon.png" alt="WU Logo" class="logo">
             <h1 class="title-blue">Wollo University</h1>
             <h2 class="subtitle">KIOT</h2>
             <p class="tagline">Freshman Student Info Hub</p>
@@ -18,10 +28,10 @@
         <div class="selection-box">
             <select id="sectionSelect" onchange="resetDisplay()">
                 <option value="" disabled selected>ሴክሽን ይምረጡ</option>
-                <option value="D">Section D</option>
                 <option value="A">Section A</option>
                 <option value="B">Section B</option>
                 <option value="C">Section C</option>
+                <option value="D">Section D</option>
                 <option value="E">Section E</option>
                 <option value="F">Section F</option>
                 <option value="G">Section G</option>
@@ -51,7 +61,7 @@
 
         <footer>
             <div class="footer-line"></div>
-            <div class="footer-content user-info">
+            <div class="user-info">
                 <p class="highlight-name">Meseret T.</p>
                 <p class="highlight-id">ID: 1784/18</p>
                 <p>Wollo University | KIOT</p>
